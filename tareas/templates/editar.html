@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Editar Tarea</title></head>
+<body>
+    <h1>✏️ Editar Tarea</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p><input name="titulo" value="{{ tarea.titulo }}" required style="width:300px;"></p>
+        <p><textarea name="descripcion" rows="5" style="width:300px;">{{ tarea.descripcion }}</textarea></p>
+        <label>
+            <input type="checkbox" name="completada" {% if tarea.completada %}checked{% endif %}>
+            ✅ Marcar como completada
+        </label>
+        <br><br>
+        <button type="submit">💾 Actualizar</button>
+        <a href="{% url 'lista' %}"><button>Cancelar</button></a>
+    </form>
+</body>
+</html>

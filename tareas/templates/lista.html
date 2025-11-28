@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gestión de Tareas</title>
+</head>
+
+<body>
+    <h1>📋 Lista de Tareas</h1>
+    <a href="{% url 'crear' %}"><button>Nueva Tarea</button></a>
+    <ul>
+        {% for tarea in tareas %}
+        <li style="border:1px solid #ccc; margin:10px; padding:10px;">
+            <strong>{{ tarea.titulo }}</strong>
+            {% if tarea.completada %}<span style="color:green">(✓ Completada)</span>{% endif %}
+            <br>{{ tarea.descripcion }}
+            <br><small>🕒 {{ tarea.fecha_creacion|date:"d/m/Y H:i" }}</small>
+            <br>
+            <a href="{% url 'editar' tarea.id %}"><button>Editar</button></a>
+            <a href="{% url 'eliminar' tarea.id %}"><button style="background:red;color:white;">Eliminar</button></a>
+        </li>
+        {% empty %}
+        <li>❌ No hay tareas. <a href="{% url 'crear' %}">Crear la primera</a></li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
