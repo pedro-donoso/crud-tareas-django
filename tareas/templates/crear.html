@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><title>Crear Tarea</title></head>
+<body>
+    <h1>➕ Nueva Tarea</h1>
+    <form method="post">
+        {% csrf_token %}  <!-- Ejercicio 3: Protección CSRF -->
+        <p><input name="titulo" placeholder="Título de la tarea" required style="width:300px;"></p>
+        <p><textarea name="descripcion" placeholder="Descripción detallada" required rows="5" style="width:300px;"></textarea></p>
+        <button type="submit">💾 Guardar Tarea</button>
+        <a href="{% url 'lista' %}"><button>Cancelar</button></a>
+    </form>
+</body>
+</html>
